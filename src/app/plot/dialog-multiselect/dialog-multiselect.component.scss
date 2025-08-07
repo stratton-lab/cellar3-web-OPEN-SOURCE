@@ -1,0 +1,12 @@
+@import "../../../theme";
+
+.interaction-select {
+  float: right;
+  font-weight: 600;
+  color: $dark-orange;
+  font-size: 12px;
+}
+
+.interaction-select.has-match {
+  color: $twitter-blue;
+}

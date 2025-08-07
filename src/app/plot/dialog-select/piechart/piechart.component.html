@@ -1,0 +1,11 @@
+<div class="simple-select-pie-chart-wrapper">
+  <plotly-plot #plotlyPlot
+               [data]="data"
+               [layout]="layout"
+               [config]="config"
+               (plotlyClick)="onGroupClick($event)"
+               (hover)="showTooltip($event)"
+               (unhover)="hideTooltip()">
+  </plotly-plot>
+  <cells-tooltip #cellsTooltipComponent></cells-tooltip>
+</div>

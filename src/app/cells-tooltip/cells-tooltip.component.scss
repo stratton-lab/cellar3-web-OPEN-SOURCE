@@ -1,0 +1,19 @@
+@import '../../tooltip';
+@import '../../theme';
+
+.plot-tooltip {
+  border-left: 5px solid;
+
+  .name {
+    font-weight: 800;
+  }
+
+  .cells-count {
+    font-weight: 600;
+    color: $darker-gray;
+  }
+
+  .actions {
+    color: $light-red;
+  }
+}

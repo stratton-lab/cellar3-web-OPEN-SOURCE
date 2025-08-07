@@ -1,0 +1,13 @@
+@import "../../theme";
+
+.actions {
+  position: relative;
+  z-index: 100;
+  top: 30px;
+  margin-left: 40px;
+  display: inline-block;
+
+  .checkbox {
+    color: $soft-black;
+  }
+}

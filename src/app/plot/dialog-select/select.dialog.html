@@ -1,0 +1,79 @@
+<div *ngIf="isOpen()" class="dialog-wrapper">
+  <div class="dialog-overlay" (click)="close()"></div>
+
+  <div class="dialog large-dialog">
+    <div class="dialog-title">Selected {{ getSelectedSamplesCount() }} Cells <i (click)="close()"
+                                                                                class="fa fa-multiply close-btn"></i>
+    </div>
+    <div class="dialog-content">
+      <div class="row">
+        <div class="col-lg-5">
+          <piechart
+            [groups]="groups"
+            [colors]="selectedEvent.colors"
+            [revision]="pieChartRevision"
+            [tooltipText]="getTooltipText()"
+            [animateTraceIdx]="firstSelectionTraceIndex"
+            (onSelected)="onGroupSelected($event)"
+          ></piechart>
+        </div>
+        <div class="col-lg-7">
+
+          <div class="tabs-buttons">
+            <div *ngFor="let buttonsCategory of buttonCategories"
+                 (click)="expandedButtonsCategory=buttonsCategory"
+                 [class.active]="expandedButtonsCategory==buttonsCategory"
+                 class="tab-button">{{ buttonsCategory }}
+            </div>
+          </div>
+
+          <div *ngIf="isCleanupExpanded()" class="dialog-large-actions small-cleaning-buttons">
+            <div class="row">
+              <div *ngFor="let action of cleanupActions" class="col-lg-6">
+                <div (click)="selectAction(action)"
+                     [class.inactive]="action.isInactive(groups)" class="block-button action-button">
+                  <div class="block-button-name">{{ action.name }}</div>
+                  <div *ngIf="!isSelectedAction(action)" class="block-button-description">{{ action.description }}</div>
+                  <div *ngIf="isSelectedAction(action)"
+                       class="action-btn-message">{{ action.getButtonMessage(firstSelectionTraceIndex) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div *ngIf="canUndo()" (click)="undo()" class="undo-btn">Undo {{ getLatestStateDescription() }}</div>
+            </div>
+          </div>
+          <div *ngIf="isAnalysisExpanded()" class="dialog-large-actions analysis-buttons">
+
+            <div>
+              <div *ngFor="let action of analysisActions" class="block-button analysis-button"
+                   [class.inactive]="action.isInactive(groups)">
+                <div (click)="selectAction(action)">
+                  <div class="block-button-name">{{ action.name }}</div>
+                  <div *ngIf="!isSelectedAction(action)" class="block-button-description">{{ action.description }}</div>
+                  <div *ngIf="isSelectedAction(action)"
+                       class="action-btn-message">{{ action.getButtonMessage(firstSelectionTraceIndex) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div (click)="showPseudoTimeDialog()" [class.inactive]="!selectionPseudoTimeBestMatch"
+                 class="block-button">
+              <div class="block-button-name">Pseudotime Analysis
+                <div
+                  class="pseudotime-select"
+                  [class.has-match]="selectionPseudoTimeBestMatch"> {{ getPseudoTimeMessage() }}
+                </div>
+              </div>
+              <div class="block-button-description">Arrange single cells along a developmental path, capturing changes
+                in gene expression and pinpointing key stages of cellular progression.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="marketplace">
+  <div class="marketplace-wrapper">
+    <div class="marketplace-filters">
+      <div class="tabs-buttons">
+
+      </div>
+    </div>
+    <div class="marketplace-content">
+      <a class="show-all-datasets-link" routerLink="/docsum">View All Datasets</a>
+      <div class="search-wrapper">
+        <dataset-search></dataset-search>
+      </div>
+
+      <div *ngIf="!showSearchResults()" class="row exploration-tree">
+        <div class="navigation">
+          <a (click)="datasetsService.backToCategory(category)"
+             *ngFor="let category of datasetsService.backStack"
+             class="navigation-category">{{category.name}}</a>
+        </div>
+        <div *ngFor="let category of datasetsService.selectedCategory?.categories" class="col-12 col-md">
+          <div class="category"
+               (click)="datasetsService.selectCategory(category)"
+               [class.active]="datasetsService.selectedCategory==category">
+            <div *ngIf="category.imageUrl" class="subcategory-img">
+              <img [src]="category.imageUrl" alt="">
+            </div>
+            <div class="category-name">{{category.name}}
+              <div class="count" [title]="'There are '+category.datasets_count+' datasets in this category.'">
+                {{category.datasets_count}}</div>
+            </div>
+            <div class="category-description">{{category.description}}</div>
+          </div>
+        </div>
+
+        <dataset-item *ngFor="let dataset of datasetsService.getSelectedCategoryDatasets()"
+                      [dataset]="dataset"
+                      class="col-lg-6 col-md-12 col-sm-12"></dataset-item>
+
+        <div *ngIf="!datasetsService.busy && datasetsService.isEmpty(datasetsService.selectedCategory)" class="info-msg">
+          No subcategories or datasets in this category.
+        </div>
+        <div *ngIf="datasetsService.busy" class="simple-loading">Loading...</div>
+
+      </div>
+
+      <div *ngIf="showSearchResults()" class="row search-results">
+        <dataset-item *ngFor="let dataset of searchService.searcher.$results | async"
+                      [dataset]="dataset"
+                      class="col-lg-6 col-md-12 col-sm-12"></dataset-item>
+        <div *ngIf="searchService.searcher.isQueryTooShort()" class="info-msg">Please provide a longer query.</div>
+        <div *ngIf="searchService.searcher.hasNoResults()" class="info-msg">No results for your query.</div>
+      </div>
+
+      <!--
+      <div class="public-actions">
+        <app-file-upload [busy]="busy"
+                         (onFileUpload)="shareDataset($event)"
+                         [name]="'Share Your Dataset'"
+                         [icon]="'bi bi-file-earmark-arrow-up-fill'"></app-file-upload>
+      </div>
+      -->
+    </div>
+  </div>
+</div>

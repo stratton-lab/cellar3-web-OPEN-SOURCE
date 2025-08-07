@@ -1,0 +1,54 @@
+@import "../../../theme";
+
+.buttons-category-name {
+  font-weight: 800;
+  font-size: 12px;
+  color: #636668;
+  padding-right: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.buttons-category-name:hover {
+  color: $dark-blue;
+}
+
+
+.action-btn-message {
+  display: inherit;
+  margin-top: 10px;
+  color: #4aa3bc;
+  font-weight: 600;
+}
+
+
+.analysis-button {
+  .analysis-message {
+    display: none;
+  }
+}
+
+.undo-btn {
+  display: inline-block;
+  padding: 3px 10px;
+  color: white;
+  border-radius: 5px;
+  background-color: $darker-gray;
+  cursor: pointer;
+}
+
+.undo-btn:hover {
+  background-color: $gray;
+}
+
+.pseudotime-select {
+  float: right;
+  font-weight: 600;
+  color: $dark-orange;
+  font-size: 12px;
+}
+
+.pseudotime-select.has-match {
+  color: $twitter-blue;
+}

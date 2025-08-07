@@ -1,0 +1,56 @@
+<div *ngIf="isOpen()" class="dialog-wrapper">
+  <div class="dialog-overlay" [style.z-index]="getOverlayZ()" (click)="close()"></div>
+
+  <div class="dialog large-dialog" [style.z-index]="getDialogZ()">
+    <div class="dialog-header">
+      <div class="dialog-title">Differential Gene Expression <i (click)="close()" class="fa fa-multiply close-btn"></i>
+      </div>
+    </div>
+    <div class="dialog-content">
+      <div class="dialog-top-actions">
+        <download [name]="getExportName()" [formats]="exportFormats" [backend]="getExportBackend"></download>
+        <gene-search [backend]="searchGenes"
+                     (onGeneSelected)="addSelectedGene($event)"
+                     (onGeneHovered)="highlightGene($event)"></gene-search>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <volcano-plot #volcanoPlot
+                        [datasetId]="input.datasetId"
+                        [target]="input.target"
+                        [background]="input.background"
+                        (onGeneSelected)="addSelectedGene($event)"
+          ></volcano-plot>
+        </div>
+        <div class="col-lg-6">
+          <div class="selected-genes">
+            <div *ngFor="let gene of selectedGenes" (mouseenter)="highlightPoint(gene.name)"
+                 class="selected-gene" [ngClass]="'category-'+gene.category">{{gene.name}}
+              <i (click)="unselectGene(gene.name)" class="fa fa-multiply"></i></div>
+            <div *ngIf="noSelectedGenes()" class="no-selected-msg">Click on genes in the plot to select them.</div>
+          </div>
+          <div class="dialog-large-actions" [class.inactive]="noSelectedGenes()">
+            <div (click)="showViolinPlot()" class="block-button">
+              <div class="block-button-name">Violin Plot</div>
+              <div class="block-button-description">Visualize the range and distribution of gene expression across cell
+                groups.
+              </div>
+            </div>
+            <div (click)="showDotPlot()" class="block-button">
+              <div class="block-button-name">Dot Plot</div>
+              <div class="block-button-description">Visualize the average expression and proportion of cells expressing
+                selected genes compared to the background.
+              </div>
+            </div>
+            <div (click)="showUmapPlot()" class="block-button">
+              <div class="block-button-name">UMAP Plot</div>
+              <div class="block-button-description">Examine the clustering and distribution of selected cells in a 2D
+                expression space against the background.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

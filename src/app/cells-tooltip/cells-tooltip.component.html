@@ -1,0 +1,15 @@
+<div *ngIf="data" class="plot-tooltip"
+     [ngStyle]="{
+     position: 'absolute',
+     top: data.y + 'px',
+     left: data.x + 'px',
+     'border-color':data.color}">
+  <div class="tooltip-header">
+
+    <div class="tooltip-content">
+      <div class="name">{{data.name}}</div>
+      <div class="cells-count">{{data.count}} cells.</div>
+      <div class="actions">{{data.text}}</div>
+    </div>
+  </div>
+</div>

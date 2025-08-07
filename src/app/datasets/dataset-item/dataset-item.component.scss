@@ -1,0 +1,136 @@
+@import "../../../theme";
+
+.dataset {
+  display: block;
+  border-radius: 20px;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .2s ease-in-out;
+
+  .dataset-name {
+    font-size: 21px;
+    font-weight: 900;
+    color: $black1;
+    margin-bottom: 15px;
+  }
+
+  .dataset-description {
+    font-size: 16px;
+    font-weight: 300;
+    color: $black1;
+  }
+
+  .dataset-content-wrapper {
+    display: flex;
+  }
+
+  .dataset-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    margin-right: 20px;
+    background-color: $blue2;
+  }
+
+  .dataset-header {
+    height: 20px;
+
+    .dataset-features, .dataset-samples {
+      color: $gray2;
+      font-size: 11px;
+      font-style: italic;
+    }
+
+    .dataset-features {
+      float: left;
+    }
+
+    .dataset-samples {
+      float: right;
+    }
+  }
+}
+
+.dataset.active, .dataset.active:hover {
+  box-shadow: 0 1px 5px $blue1;
+}
+
+.dataset:hover {
+  transform: scale(1.05);
+}
+
+.tags {
+  margin-top: 10px;
+}
+
+
+.tag {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  color: $dark-gray;
+  margin-right: 15px;
+
+  .fa, .fas, far {
+    font-size: 80%;
+  }
+}
+
+.tag.tag-species .fa:before {
+  content: '\f52e'
+}
+
+.tag.tag-tissue .fa:before {
+  content: '\f604'
+}
+
+.tag.tag-cells .fa:before {
+  content: '\f7fa'
+}
+
+.tag.tag-type .fa:before {
+  content: '\f492';
+}
+
+.tag.tag-prod-status {
+  font-size: 10px;
+  font-weight: 900;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.tag.prod-status-PROD_PUBLIC {
+  color: $main-green;
+  border-color: $main-green;
+}
+
+.tag.prod-status-PROD_PRIVATE {
+  color: $dark-orange;
+  border-color: $dark-orange;
+}
+
+.tag.prod-status-DEV_ONLY {
+  color: $twitter-blue;
+  border-color: $twitter-blue;
+}
+
+@media (max-width: 991px) {
+  .dataset {
+    padding: 30px;
+
+    .dataset-content-wrapper {
+      display: block;
+    }
+
+    .dataset-image {
+      margin-right: 0;
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  }
+}

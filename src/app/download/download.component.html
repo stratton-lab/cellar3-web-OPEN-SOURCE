@@ -1,0 +1,8 @@
+<div [class.busy]="busy" class="dropdown">
+  <div class="download-btn-name"><i class="fa fa-spinner"></i><i class="fa fa-download fa-file-"></i> Download</div>
+  <div class="dropdown-menu">
+    <div (click)="onFormatSelected(format)"
+         *ngFor="let format of formats" class="dropdown-menu-item">
+      <i class="fa" [ngClass]="getIcon(format)"></i> {{format}}</div>
+  </div>
+</div>

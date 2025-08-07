@@ -1,0 +1,44 @@
+<div *ngIf="isOpen()" class="dialog-wrapper">
+  <div class="dialog-overlay" (click)="close()"></div>
+
+  <div class="dialog large-dialog">
+    <div class="dialog-title">Cluster Comparison <i (click)="close()"
+                                                    class="fa fa-multiply close-btn"></i></div>
+    <div class="dialog-content">
+      <div class="row">
+        <div class="col-lg-5">
+          <barchart [multiGroups]="multiGroups" [colors]="input.colors"></barchart>
+        </div>
+        <div class="col-lg-7">
+          <div class="dialog-large-actions">
+            <div (click)="showDifferentialExpressionDialog()" class="block-button">
+              <div class="block-button-name">Differential Expressions</div>
+              <div class="block-button-description">Identify genes with varying expression levels across single cells,
+                shedding light on cellular diversity and function. Visualize these differences with Volcano, Violin, Dot
+                and UMAP plots.
+              </div>
+            </div>
+            <div (click)="showFunctionalAnalysisDialog()" class="block-button">
+              <div class="block-button-name">Functional Analysis</div>
+              <div class="block-button-description">Unveil the biological functions and pathways associated with the
+                differentially expressed genes. Differential Expression will be performed first.
+              </div>
+            </div>
+
+            <div (click)="showInteractionDialog()" [class.inactive]="!isCellCellInteractionAvailable()" class="block-button">
+              <div class="block-button-name">Interaction Analysis
+                <div
+                  class="interaction-select"
+                  [class.has-match]="isCellCellInteractionAvailable()"> {{ getCellCellInteractionMessage() }}
+                </div>
+              </div>
+              <div class="block-button-description">Investigate and quantify cell-to-cell communication, enhancing our
+                understanding of cellular networks and tissue dynamics.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

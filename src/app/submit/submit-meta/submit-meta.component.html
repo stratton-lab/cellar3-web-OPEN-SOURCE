@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-8 offset-lg-2">
+      <div class="submit-title">Dataset Submission Inquiry</div>
+      <div class="submit-intro">
+        Please fill in this form to tell us about the dataset you would like to submit. After we review your proposal,
+        we will send you a link to submit your RDS dataset file.
+        Please follow the formatting example of datasets currently on the website.
+      </div>
+      <div *ngIf="showSubmissionForm()" class="meta-form">
+
+        <div class="meta-field">
+          <div class="meta-field-name">Dataset ID</div>
+          <div class="dataset-id">{{ datasetId }}
+            <i class="fa fa-refresh" (click)="refreshDatasetId()"
+               title="Click to refresh auto-generate dataset id."></i></div>
+          <div class="meta-field-description">The dataset ID will be auto-generated based on values from other fields.
+          </div>
+        </div>
+
+        <div *ngFor="let field of fieldsList" [id]="field.key" class="meta-field"
+             [class.invalid]="field.obj.invalidMsg">
+          <div class="meta-field-name">{{ field.obj.name }} <i class="tag" [class.required]="field.obj.required"></i>
+          </div>
+          <div [ngSwitch]="field.obj.type">
+            <div *ngSwitchCase="FieldType.LONGTEXT">
+              <textarea [(ngModel)]="field.obj.value" [placeholder]="field.obj.example"></textarea>
+            </div>
+            <div *ngSwitchCase="FieldType.CHECKBOX">
+              <div class="options-name binary-checkbox" (click)="field.obj.value=!field.obj.value">
+                <i class="toggle" [ngClass]="field.obj.value?'fa-solid fa-toggle-on':' fa-solid fa-toggle-off'"></i>
+                {{ field.obj.value ? 'YES' : 'NO' }}
+              </div>
+            </div>
+            <div *ngSwitchCase="FieldType.NUMBER">
+              <input type="number" [(ngModel)]="field.obj.value" [placeholder]="field.obj.example||0">
+            </div>
+            <div *ngSwitchCase="FieldType.RADIOS">
+              <div *ngFor="let option of field.obj.options" class="options-name" (click)="field.obj.value=option.value">
+                <i class="checkbox"
+                   [ngClass]="field.obj.value==option.value?'fas fa-circle':' far fa-circle'"></i> {{ option.name }}
+              </div>
+            </div>
+            <div *ngSwitchCase="FieldType.DROPDOWN">
+              <div class="dropdown">
+                <i class="fas fa-caret-down"></i> {{ field.obj.value ? field.obj.value : 'Please Select' }}
+                <div class="dropdown-menu">
+                  <div *ngFor="let option of field.obj.options"
+                       (click)="setDropdownValue($event, field.obj, option.value)" class="dropdown-menu-item"><i
+                    class="fa fa-check"></i> {{ option.name }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngSwitchDefault>
+              <input type="text" [(ngModel)]="field.obj.value" [placeholder]="field.obj.example||''">
+            </div>
+          </div>
+          <div *ngIf="field.obj.invalidMsg" class="meta-field-error">{{ field.obj.invalidMsg }}</div>
+          <div class="meta-field-description">{{ field.obj.description }}</div>
+        </div>
+        <div class="actions">
+          <div (click)="submit()" class="button button-primary button-submit">Submit</div>
+        </div>
+      </div>
+      <div *ngIf="busy" class="loading fa-solid fa-dna"></div>
+      <div *ngIf="submitMsg" class="submit-message" [ngClass]="'message-'+submitMsg.type">
+        <div class="message-title">{{ submitMsg.title }}</div>
+        <div class="message-details">{{ submitMsg.detail }}</div>
+        <div (click)="reset()" class="button button-primary">Submit Another Dataset</div>
+      </div>
+    </div>
+  </div>
+</div>
+

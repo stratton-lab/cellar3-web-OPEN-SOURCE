@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="msg-wrapper">
+    <div *ngIf="msg" class="err-msg">
+      <div class="msg-title">{{msg.title}}</div>
+      {{msg.detail}}</div>
+  </div>
+
+  <div class="row plots-wrapper">
+    <div *ngFor="let dc of dataset_configs; let i = index" class="col-lg-12">
+      <plot [datasetId]="dc.datasetId"></plot>
+    </div>
+  </div>
+
+  <annotate-cluster></annotate-cluster>
+  <dialog-select></dialog-select>
+  <dialog-multiselect></dialog-multiselect>
+  <violin-plot-dialog></violin-plot-dialog>
+  <umap-plot-dialog></umap-plot-dialog>
+  <dot-plot-dialog></dot-plot-dialog>
+  <diff-expression></diff-expression>
+  <functional></functional>
+  <pathways></pathways>
+  <pseudotime></pseudotime>
+  <interaction></interaction>
+  <gene-explorer></gene-explorer>
+</div>

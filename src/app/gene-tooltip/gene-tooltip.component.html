@@ -1,0 +1,12 @@
+<div *ngIf="data" class="plot-tooltip"
+     [ngStyle]="{position: 'absolute', top: data.y + 'px', left: data.x + 'px'}">
+  <div class="tooltip-header">
+
+    <div class="gene-name"><img class="gene-icon" ngSrc="assets/images/tooltip/gene/default-gene.png" alt=""
+                                height="100" width="100">{{data.name}}</div>
+  </div>
+  <div class="tooltip-content">
+    <div *ngFor="let field of data.fields" class="info">{{field.name}}: <b>{{field.value}}</b></div>
+    <div class="info description">{{data.description}}</div>
+  </div>
+</div>

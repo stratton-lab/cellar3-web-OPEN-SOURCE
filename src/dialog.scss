@@ -1,0 +1,213 @@
+@import "theme";
+
+.dialog-overlay {
+  position: fixed;
+  z-index: 998;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.dialog {
+
+  border-top: 7px solid white;
+
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  margin-left: -400px;
+  padding: 15px 30px;
+  z-index: 999;
+  width: 900px;
+  max-width: 100%;
+  border-radius: $card-border-radius;
+  background: #fff;
+  pointer-events: auto;
+  min-height: 300px;
+
+  /* ANIMATION */
+  animation: slideInFromTop 0.2s ease-out forwards;
+  opacity: 0; /* Hidden before animation starts */
+
+  .dialog-title {
+    font-size: 26px;
+    color: $header-title-color;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+
+    .close-btn {
+      font-size: 26px;
+      cursor: pointer;
+      margin-left: auto;
+      padding-top: 3px;
+    }
+
+    .close-btn:hover {
+      color: $red1;
+    }
+  }
+
+  .dialog-description {
+    font-size: 14px;
+    color: $gray1;
+  }
+
+  .busy-msg-title {
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+  .dialog-content {
+
+    margin-top: 20px;
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 30px;
+    }
+
+    input[type=text]:not(.browser-default), textarea {
+      border: 1px solid $soft-blue;
+      padding: 3px;
+      border-radius: 4px;
+      width: inherit;
+      margin-bottom: 10px;
+    }
+
+    .dialog-table-wrapper {
+      margin: 30px;
+    }
+
+  }
+
+  .dialog-actions {
+    text-align: center;
+  }
+
+
+  .dialog-large-actions {
+    background: #f5fafc;
+    border-radius: 10px;
+    padding: 20px 40px;
+    margin-top: 10px;
+    display: flex;
+
+    .block-button {
+
+      max-width: 150px;
+      display: inline-block;
+      cursor: pointer;
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      transition: transform .2s ease-in-out;
+      margin-bottom: 40px;
+      margin-right: 10px;
+
+      .block-button-name {
+        text-align: left;
+        font-weight: 800;
+      }
+
+      .block-button-description {
+        margin-top: 10px;
+        font-weight: 300;
+      }
+    }
+
+    .block-button:hover {
+      transform: scale(1.03);
+    }
+
+    .block-button.selected {
+      border: 1px solid rgb(29, 161, 242);
+    }
+  }
+
+  .block-button.inactive {
+    opacity: 0.6;
+    cursor: initial;
+    color: gray;
+  }
+
+  .block-button.inactive:hover {
+    transform: none;
+  }
+
+  .dialog-large-actions.inactive {
+    .block-button {
+      opacity: 0.6;
+      cursor: initial;
+      color: gray;
+    }
+
+    .block-button:hover {
+      transform: none;
+    }
+  }
+
+}
+
+.large-dialog {
+  top: 50%;
+  width: 98%;
+  max-width: 100%;
+  height: 98%;
+  margin-left: initial;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* ANIMATION */
+  animation: slideInFromTopTransform 0.2s ease-out forwards;
+  opacity: 0; /* Hidden before animation starts */
+
+  .dialog-large-actions {
+    margin-top: 10px;
+    flex-direction: column;
+
+    .block-button {
+      display: block;
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .row {
+      .col-lg-4 {
+        display: flex;
+      }
+    }
+
+
+  }
+}
+
+@media (max-width: 991px) {
+  .large-dialog {
+    top: 10px;
+    left: 5px;
+    right: 5px;
+    width: initial;
+    transform: none;
+    max-height: 100%;
+    overflow-y: auto;
+
+    /* ANIMATION */
+    animation: slideInFromTop 0.2s ease-out forwards;
+    opacity: 0; /* Hidden before animation starts */
+  }
+
+  .dialog {
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    margin-left: 0;
+    width: inherit;
+  }
+
+}

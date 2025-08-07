@@ -1,0 +1,12 @@
+<div *ngIf="tooltipData" class="plot-tooltip"
+     [ngStyle]="{position: 'absolute', top: tooltipData.y + 'px', left: tooltipData.x + 'px'}">
+  <div class="tooltip-header">
+    <img [src]="tooltipData.imgSrc ?? tooltipService.DEFAULT_IMAGE" alt="cell type">
+    <div class="cell-type">{{tooltipData.cellType}}</div>
+  </div>
+  <div class="tooltip-content">
+    <div class="info condition">Condition: <b>{{tooltipData.condition}}</b></div>
+    <div class="info sample">Sample: <b>{{tooltipData.sampleName}}</b></div>
+    <div class="info cell-id">Cell ID: <b>{{tooltipData.cellId}}</b></div>
+  </div>
+</div>

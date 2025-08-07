@@ -1,0 +1,11 @@
+<div *ngIf="facet" class="card">
+  <div class="card-title">{{ facet.name }}</div>
+  <div *ngFor="let value of facet.items">
+    <div (click)="toggleFacet(value)"
+         [class.selected]="isSelected(value.name)"
+         [title]="getTooltip(value)"
+         class="facet-term">
+      {{ value.name }} <span class="facet-count">{{ value.count }}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div *ngIf="isOpen()" class="dialog-wrapper">
+  <div class="dialog-overlay" [style.z-index]="getOverlayZ()" (click)="close()"></div>
+
+  <div class="dialog large-dialog" [style.z-index]="getDialogZ()">
+    <div class="dialog-header">
+      <div class="dialog-title">Pseudotime - {{ input?.pseudotime?.name }} <i (click)="close()"
+                                                                              class="fa fa-multiply close-btn"></i>
+      </div>
+    </div>
+    <div class="dialog-content">
+      <div class="msg-wrapper">
+        <div *ngIf="msg" class="err-msg">
+          <div class="msg-title">{{ msg!.title }}</div>
+          {{ msg!.detail }}
+        </div>
+      </div>
+      <div class="tabs-buttons">
+        <div *ngFor="let mode of availableModes"
+             (click)="selectMode(mode)"
+             [class.active]="selectedMode==mode"
+             class="tab-button">{{mode}}</div>
+      </div>
+
+      <div *ngIf="input?.pseudotime?.directions && selectedMode==MODE_TRAJECTORY" class="tabs-buttons">
+        <div *ngFor="let direction of input?.pseudotime?.directions"
+             (click)="selectDirection(direction)"
+             [class.active]="selectedDirection?.key==direction.key"
+             class="tab-button tab-button-alt">{{ direction.name }}
+        </div>
+      </div>
+
+      <div *ngIf="selectedMode==MODE_EXPRESSION" class="gene-search-wrapper">
+        <gene-search [backend]="searchGenes"
+                     (onGeneSelected)="showUmapExpressionForGene($event)"></gene-search>
+        <div class="selected-gene">{{selectedGene}}</div>
+      </div>
+
+      <plotly-plot *ngIf="data" #plotlyPlot
+                   [data]="data"
+                   [layout]="layout"
+                   [config]="config">
+      </plotly-plot>
+      <div *ngIf="busy" class="loading fa-solid fa-dna"></div>
+    </div>
+  </div>
+</div>
+

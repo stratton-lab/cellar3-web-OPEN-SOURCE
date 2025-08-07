@@ -1,0 +1,16 @@
+@use "../../theme";
+
+.docsum-wrapper {
+  background-color: var(--background);
+  border-radius: 30px;
+  padding: 20px 0;
+}
+
+.datasets-count {
+  text-align: center;
+  font-weight: 500;
+}
+
+.datasets {
+  margin-top: 20px;
+}

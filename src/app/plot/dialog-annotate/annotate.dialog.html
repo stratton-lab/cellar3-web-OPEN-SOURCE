@@ -1,0 +1,20 @@
+<div *ngIf="isOpen()" class="dialog-wrapper">
+  <div class="dialog-overlay" (click)="close()"></div>
+
+  <div class="dialog" [style.border-top-color]="color">
+    <div class="dialog-title">Cluster Annotation</div>
+    <div class="dialog-content">
+      <div class="row dialog-table-wrapper">
+        <label class="col-6" for="annotate-cluster-name">Cluster Name</label>
+        <input class="col-6" [(ngModel)]="name" type="text"
+               id="annotate-cluster-name">
+
+        <label class="col-6" for="annotate-cluster-group">Cluster Group</label>
+        <input class="col-6" [(ngModel)]="group" type="text" id="annotate-cluster-group">
+      </div>
+    </div>
+    <div class="dialog-actions">
+      <div  (click)="update()" class="button button-primary">Update</div>
+    </div>
+  </div>
+</div>

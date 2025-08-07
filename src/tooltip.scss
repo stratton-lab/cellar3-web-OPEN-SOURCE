@@ -1,0 +1,35 @@
+@import "theme";
+
+.plot-tooltip {
+  z-index: 100;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  width: 200px;
+
+  .tooltip-header {
+    position: relative;
+
+    .cell-type {
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: white;
+      font-weight: 700;
+      background-color: $blue2;
+    }
+  }
+
+  .tooltip-content {
+    padding: 10px
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+}

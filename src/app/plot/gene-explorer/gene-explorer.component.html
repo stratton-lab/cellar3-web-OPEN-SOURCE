@@ -1,0 +1,32 @@
+<div *ngIf="isOpen()" class="dialog-wrapper">
+  <div class="dialog-overlay" [style.z-index]="getOverlayZ()" (click)="close()"></div>
+
+  <div class="dialog" [style.z-index]="getDialogZ()">
+    <div class="dialog-header">
+      <div class="dialog-title">Gene Explorer <i (click)="close()" class="fa fa-multiply close-btn"></i></div>
+      <div class="dialog-description">Explore gene expression in all cells of this dataset.</div>
+    </div>
+    <div class="dialog-content">
+      <div class="gene-search-wrapper">
+        <gene-search [backend]="searchGenes" (onGeneSelected)="addGene($event)"></gene-search>
+        <div class="gene-tags">
+          <div *ngFor="let gene of selectedGenes"
+               class="gene-tag">{{ gene.name }}
+            <i (click)="removeGene(gene.name)" class="fa fa-multiply"></i></div>
+          <div *ngIf="noSelectedGenes()" class="no-selected-msg">No genes selected.</div>
+        </div>
+      </div>
+      <div class="gene-visualizations">
+        <div class="row">
+          <div *ngFor="let viz of visualizations" class="col-lg-4">
+            <div (click)="showViz(viz)" class="viz-block-button" [class.inactive]="noSelectedGenes()">
+              <div class="block-button-name">{{ viz.name }}</div>
+              <!-- <div class="block-button-description">{{ viz.description }}</div> -->
+              <img [src]="viz.img"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

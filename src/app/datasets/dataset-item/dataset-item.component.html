@@ -1,0 +1,19 @@
+<a *ngIf="dataset" class="dataset" routerLink="/display" [queryParams]="{dataset:dataset.id}">
+  <div class="dataset-content-wrapper">
+    <img class="dataset-image" width="200" height="200" [src]="getImage()" alt="Dataset image">
+    <div class="dataset-content">
+      <div class="tag tag-prod-status" *ngIf="dataset.prodStatus"
+           [ngClass]="'prod-status-'+dataset.prodStatus">{{ getNiceProdStatus() }}
+      </div>
+      <div class="dataset-name">{{ dataset.name }}</div>
+      <div class="dataset-description">{{ dataset.description }}</div>
+      <div class="tags">
+        <div class="tag tag-tissue"><i class="fa"></i> {{ dataset.tissue }}</div>
+        <div class="tag tag-species"><i class="fa"></i> {{ dataset.species }}</div>
+        <div class="tag tag-cells"><i class="fa"></i> {{ dataset.cells }} Cells</div>
+        <div class="tag tag-type"><i class="fa"></i> {{ dataset.type }}</div>
+      </div>
+    </div>
+  </div>
+</a>
+<div *ngIf="!dataset">No dataset for ID</div>

@@ -1,0 +1,23 @@
+<div class="volcano-wrapper">
+  <div class="msg-wrapper">
+    <div *ngIf="msg" class="err-msg">
+      <div class="msg-title">{{msg.title}}</div>
+      {{msg.detail}}</div>
+  </div>
+  <plotly-plot *ngIf="data" #plotlyPlot
+               [data]="data"
+               [layout]="layout"
+               [config]="config"
+               (hover)="showTooltip($event)"
+               (unhover)="hideTooltip()"
+               (plotlyClick)="selectGene($event)">
+  </plotly-plot>
+
+  <div *ngIf="meta" (click)="downloadReceipt()" title="Step by step details on how this data was generated. Website's analysis will differ from manuscript due to real-time constraints."
+       class="receipt">Download Receipt
+  </div>
+
+  <gene-tooltip #geneTooltipComponent></gene-tooltip>
+
+  <div *ngIf="busy" class="loading fa-solid fa-dna"></div>
+</div>

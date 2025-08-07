@@ -1,0 +1,23 @@
+<div class="bar-wrapper">
+  <div class="msg-wrapper">
+    <div *ngIf="msg" class="err-msg">
+      <div class="msg-title">{{msg.title}}</div>
+      {{msg.detail}}</div>
+  </div>
+  <div class="dialog-top-actions">
+    <download [name]="getExportName()" [formats]="exportFormats" [backend]="getExportBackend"></download>
+  </div>
+  <plotly-plot *ngIf="data" #plotlyPlot
+               [data]="data"
+               (plotlyClick)="onTermClick($event)"
+               [layout]="layout"
+               [config]="config">
+  </plotly-plot>
+
+  <div *ngIf="meta" (click)="downloadReceipt()"
+       title="Step by step details on how this data was generated. Website's analysis will differ from manuscript due to real-time constraints."
+       class="receipt">Download Receipt
+  </div>
+
+  <div *ngIf="busy" class="loading fa-solid fa-dna"></div>
+</div>

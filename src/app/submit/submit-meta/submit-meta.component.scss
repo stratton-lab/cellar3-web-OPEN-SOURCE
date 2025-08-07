@@ -1,0 +1,155 @@
+@import "../../../theme";
+@import "../../../dropdown";
+
+.submit-title {
+  font-size: 46px;
+  font-weight: 800;
+  text-align: left;
+  color: #37474f;
+}
+
+.submit-intro {
+  font-size: 18px;
+  color: $darker-gray;
+  margin-top: 10px;
+  text-align: left;
+}
+
+input[type=text]:not(.browser-default), input[type=number]:not(.browser-default) {
+  width: 100%;
+  background: #fff;
+  padding-left: 20px;
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 10px;
+  border: 1px solid $gray2;
+  line-height: 50px;
+  height: 50px;
+  margin: 0;
+}
+
+.meta-form {
+  background: #f5fafc;
+  border-radius: 20px;
+  padding: 0 20px 20px 20px;
+}
+
+.meta-field {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $lighter-gray;
+  border-radius: 10px;
+  padding: 30px 10px;
+
+  .dataset-id {
+    font-weight: 600;
+
+    i {
+      cursor: pointer;
+      color: var(--tag-blue);
+      margin-left: 10px;
+    }
+  }
+
+  .meta-field-name {
+    font-size: 24px;
+    color: $black1;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .meta-field-description {
+    font-size: 14px;
+    font-style: italic;
+    color: $darker-gray;
+    margin-top: 5px;
+  }
+
+  .meta-field-error {
+    color: $red1;
+    font-weight: 800;
+  }
+
+  textarea {
+    width: 100%;
+    border-radius: 10px;
+    min-height: 50px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 40px;
+  }
+
+  .options-name {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  .binary-checkbox {
+    font-weight: 800;
+    color: $middle-blue;
+  }
+
+  .dropdown {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 15px;
+    background: white;
+
+    .dropdown-menu-item {
+      white-space: nowrap;
+    }
+  }
+
+}
+
+.meta-field.invalid {
+  border: 2px solid $red1;
+}
+
+.tag {
+  vertical-align: super;
+  font-size: 12px;
+}
+
+.tag:before {
+  content: "Optional";
+  color: $gray;
+  font-style: italic;
+  font-weight: 200;
+}
+
+.tag.required:before {
+  content: "Required";
+  color: $red1;
+  font-weight: 600;
+}
+
+.button-submit {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+}
+
+.submit-message {
+  border-radius: 10px;
+  margin: 40px 0;
+  border: 1px solid $darker-gray;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  padding: 30px;
+
+  .button {
+    margin-top: 20px;
+  }
+}
+
+.message-success {
+  color: $main-green;
+}
+
+.message-error {
+  color: $red1;
+}

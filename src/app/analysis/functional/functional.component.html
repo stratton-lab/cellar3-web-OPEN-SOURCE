@@ -1,0 +1,71 @@
+<div *ngIf="isOpen()" class="dialog-wrapper">
+  <div class="dialog-overlay" [style.z-index]="getOverlayZ()" (click)="close()"></div>
+
+  <div class="dialog large-dialog" [style.z-index]="getDialogZ()">
+    <div class="dialog-header">
+      <div class="dialog-title">Functional Analysis <i (click)="close()" class="fa fa-multiply close-btn"></i>
+      </div>
+    </div>
+    <div class="dialog-content">
+      <div class="dialog-top-actions">
+
+      </div>
+      <div class="plot-selection">
+        <div class="tabs-buttons">
+          <div *ngFor="let plotType of plotTypes"
+               (click)="setSelectedPlotType(plotType)"
+               [class.active]="selectedPlotType==plotType"
+               class="tab-button">{{plotType}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-7">
+          <div [ngSwitch]="selectedPlotType">
+            <enrichment-bar-plot
+              *ngSwitchCase="PLOT_TYPE_BAR"
+              [datasetId]="input.datasetId"
+              [species]="input.species"
+              [target]="input.target"
+              [background]="input.background"
+              [geneSet]="selectedGeneSet"
+              (onBusyState)="busy=$event"
+            ></enrichment-bar-plot>
+            <enrichment-network
+              *ngSwitchCase="PLOT_TYPE_NETWORK"
+              [datasetId]="input.datasetId"
+              [target]="input.target"
+              [background]="input.background"
+              [geneSet]="selectedGeneSet"
+              (onBusyState)="busy=$event"
+            ></enrichment-network>
+          </div>
+        </div>
+        <div class="col-lg-5">
+
+          <div class="dialog-large-actions">
+            <div class="navigation">
+              <a (click)="backToCategory(category)"
+                 *ngFor="let category of backStack"
+                 class="navigation-category">{{category.name}}</a>
+            </div>
+            <div *ngFor="let geneSet of getCompatibleGeneSets(selectedCategory.geneSets)"
+                 (click)="setSelectedGeneSet(geneSet)" class="block-button"
+                 [class.selected]="selectedGeneSet==geneSet.key"
+                 [class.inactive]="busy">
+              <div class="block-button-name">{{geneSet.name}}
+                <div *ngIf="geneSet?.geneSets?.length" class="category">Category</div>
+                <a *ngIf="geneSet?.link"
+                   [href]="geneSet?.link"
+                   (click)="linkClicked($event)" target="_blank" class="gene-set-link">
+                  <i class="fa fa-external-link"></i></a>
+              </div>
+              <div class="block-button-description">{{geneSet.description}}</div>
+              <div *ngIf="selectedGeneSet==geneSet.key" class="selected-gene-set-msg">{{geneSet.selectedMsg}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

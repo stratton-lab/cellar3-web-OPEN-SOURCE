@@ -1,0 +1,79 @@
+@use "../../theme";
+
+.file-input {
+  display: none;
+}
+
+i {
+  margin-right: 10px;
+}
+
+.upload-btn {
+  cursor: pointer;
+  background-color: var(--blue2);
+  border-radius: var(--button-border-radius);
+  padding: 10px;
+  margin-top: 10px;
+  color: var(--white);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+
+  display: inline-block;
+  transition: transform .2s ease-in-out;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.upload-btn:hover {
+  transform: scale(1.02);
+}
+
+.upload-btn:active {
+  transform: scale(1.1);
+  animation-timing-function: step-end;
+}
+
+.upload-wrapper {
+  border: 2px dashed var(--twitter-blue);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.upload-wrapper.busy .upload-btn {
+  background-color: var(--tag-green);
+}
+
+.no-file-selected {
+  margin-top: 10px;
+  color: var(--gray);
+}
+
+.file-selected-msg {
+  margin-top: 10px;
+  color: var(--black);
+}
+
+.title {
+  font-size: 18px;
+  color: var(--dark-gray);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+
+.description {
+  font-size: 14px;
+}
+
+img.preview {
+  max-height: 100px;
+  max-width: 100px;
+  border-radius: 10px;
+}
+
+.preview-wrapper{
+  margin-top: 10px;
+}

@@ -1,0 +1,7 @@
+<div *ngIf="data" class="plot-tooltip"
+     [ngStyle]="{position: 'absolute', top: data.y + 'px', left: data.x + 'px'}">
+  <div class="tooltip-header">{{ data.info.source }} 🡺 {{ data.info.target }}</div>
+  <div class="tooltip-content">
+    Combined Probabilities: <b>{{data.info.value}}</b>
+  </div>
+</div>

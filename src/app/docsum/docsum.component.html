@@ -1,0 +1,36 @@
+<div class="docsum-wrapper">
+  <div *ngIf="busy" class="loading fa-solid fa-dna"></div>
+
+  <div *ngIf="msg" class="msg err-msg">
+    <div class="msg-title">{{ msg.title }}</div>
+    {{ msg.detail }}
+  </div>
+
+
+  <div *ngIf="res" class="container" [class.busy]="busy">
+    <div class="row">
+      <div class="col-lg-3 col-md-12 col-12">
+        <facet (onToggled)="toggleFacet($event)"
+               *ngFor="let facet of res.facets"
+               [facet]="facet"
+               [filters]="filters"></facet>
+      </div>
+      <div class="col-lg-6 col-md-12 col-12">
+        <div class="datasets-count">
+          Showing {{ res.first_number }} to {{ res.last_number }} of {{ res.count }} Datasets.
+        </div>
+        <div class="datasets">
+          <dataset-item *ngFor="let dataset of res.results"
+                        [dataset]="dataset"></dataset-item>
+        </div>
+
+      </div>
+      <div class="col-lg-3 col-md-12 col-12">
+        <!--
+        <chart-donut *ngFor="let chartFacet of chartFacets" [chartInputData]="chartFacet"></chart-donut>
+        -->
+      </div>
+    </div>
+  </div>
+
+</div>

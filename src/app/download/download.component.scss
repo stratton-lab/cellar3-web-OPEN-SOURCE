@@ -1,0 +1,32 @@
+@import "../../dropdown.scss";
+
+.dropdown {
+  .download-btn-name {
+    cursor: pointer;
+    font-weight: 600;
+
+    .fa-spinner {
+      display: none;
+      animation: simple-rotate 4s infinite;
+    }
+  }
+}
+
+.dropdown.busy {
+  .download-btn-name {
+    .fa-spinner {
+      display: inline-block;
+    }
+
+    .fa-download {
+      display: none;
+    }
+  }
+
+  .dropdown-menu {
+    display: none;
+  }
+}
+
+.dropdown.busy {
+}

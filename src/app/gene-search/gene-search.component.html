@@ -1,0 +1,17 @@
+<div class="dropdown">
+  <i class="fa fa-search"></i>
+  <input [(ngModel)]="searcher.query"
+         (keyup)="searcher.search()"
+         (keyup.enter)="searcher.search()"
+         type="text" placeholder="Search genes..."/>
+  <div *ngIf="(searcher.$results | async) as genes">
+    <div class="dropdown-menu" *ngIf="genes?.length">
+      <div (click)="selectGene(gene)"
+           (mouseenter)="showGene(gene)"
+           *ngFor="let gene of genes"
+           class="dropdown-menu-item gene" [ngClass]="'category-'+gene.category">
+        <div [title]="getTooltip(gene)">{{gene.name}}</div>
+      </div>
+    </div>
+  </div>
+</div>

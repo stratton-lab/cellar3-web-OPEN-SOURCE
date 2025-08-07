@@ -1,0 +1,156 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-lg-2 col-lg-8 col-md-12 col-12">
+      <h1>Exploring Datasets</h1>
+      <p>SingloCell makes it easy to browse and find datasets, whether you want to explore broadly or
+        search for something specific.</p>
+      <img src="assets/images/tutorial/explore-datasets.PNG" alt="explore datasets">
+      <div>
+        The first way <b>A</b> is to use the search bar. Enter anything: dataset names, descriptions, species, tissues,
+        keywords, category names, or experimental technologies (e.g., “MERFISH”) to instantly see matching datasets.
+        <table>
+          <tbody>
+          <tr>
+            <th>Query Example</th>
+            <th>Explanation</th>
+          </tr>
+          <tr>
+            <td>injury</td>
+            <td>Returns datasets containing the word "injury" in the name or description.</td>
+          </tr>
+          <tr>
+            <td>human</td>
+            <td>Returns datasets from the human species.</td>
+          </tr>
+          <tr>
+            <td>James Watson</td>
+            <td>Returns datasets where "James Watson" is listed as an author (defined in keywords).</td>
+          </tr>
+          <tr>
+            <td>MERFISH</td>
+            <td>Returns datasets generated using the MERFISH technology.</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        The second way <b>B</b> is to explore datasets through a hierarchical category tree. You can browse step by step
+        to discover available datasets, even if you're not exactly sure what you're looking for.
+      </p>
+      <p>
+        The third way <b>C</b> is to filter datasets using several powerful filters such as Modality, State, Species,
+        Tissue, and more.
+      </p>
+      <h1>Interacting with the Main Plot</h1>
+      <img src="assets/images/tutorial/main-plot.PNG" alt="main plot">
+
+      Once you select a dataset, you’ll land on its main page, where you’ll find all the essentials: the dataset’s
+      name, tissue, species, total cell count, and quick links to related studies and GEO <b>A</b>.
+
+      Front and center, you’ll see a large
+      interactive plot displaying all the cells—arranged either by UMAP or, by their actual tissue locations for spatial
+      datasets.
+
+      You can zoom, pan, and play around with the plot to get a closer look <b>F</b>.
+      Group or color the cells by condition,
+      cell type, or sample to spot trends or differences in the data <b>B</b>.
+
+      To view the expression levels of your genes of interest, simply click on the Gene Explorer <b>C</b>.
+
+      <h2>Gene Explorer</h2>
+      <img src="assets/images/tutorial/gene-explorer.PNG" alt="gene explorer">
+      The Gene Explorer allows you to search for one or more genes of interest <b>A</b>, select them <b>B</b>,
+      and visualize their expression across the dataset using UMAP <b>C</b>, Violin <b>D</b>, and Dot <b>E</b> plots.
+
+      <h2>Customizing Data</h2>
+      You can easily delete cells or reassign them to different clusters.
+      First, select cells on the plot and click on "Analyze & Edit Selection" <b>A</b>.
+      Then, click on the "Cleanup" tab in the dialog. From there, you'll have the option to reassign clusters <b>B</b>
+      or delete cells <b>C</b>.
+      <img src="assets/images/tutorial/group-select-cleanup.PNG" alt="selection cleanup">
+
+      <h1>Analyzing Datasets in Real Time</h1>
+      <p>
+      </p>
+      <table>
+        <thead>
+        <tr>
+          <th>Analysis</th>
+          <th>What It Does</th>
+          <th>How Results Are Visualized</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Differential Gene Expression (DGE)</td>
+          <td>Identifies genes with significant expression differences between cell groups.</td>
+          <td>Interactive volcano plot; further exploration with violin, dot, and UMAP plots.</td>
+        </tr>
+        <tr>
+          <td>Functional Analysis</td>
+          <td>Finds biological categories enriched in differentially expressed genes.</td>
+          <td>Bar plots (hover for details on up/downregulated genes); network plots connect categories with shared
+            genes.
+          </td>
+        </tr>
+        <tr>
+          <td>KEGG Pathway Visualization</td>
+          <td>Shows how significant genes interact in known biological pathways.</td>
+          <td>KEGG diagrams highlight gene connections within pathways.</td>
+        </tr>
+        <tr>
+          <td>Pseudotime Trajectory</td>
+          <td>Visualizes developmental progression of cells along a trajectory (if the data is available).</td>
+          <td>Pseudotime plot with arrows/labels for direction and origin; gene expression can be overlaid in the same
+            embedding.
+          </td>
+        </tr>
+        <tr>
+          <td>Cell-Cell Interaction</td>
+          <td>Explores communication between cell types through ligand-receptor interactions (if available).
+          </td>
+          <td>Chord diagram for interactions; heatmap for ligand-receptor pairs; supporting evidence with links or
+            pathway diagrams.
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <h1>Submitting Datasets</h1>
+      <p></p>
+      <table>
+        <tbody>
+        <tr>
+          <th>Step</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Click the "SUBMIT DATASET" button in the top right corner of the website.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Fill out the pre-submission inquiry form.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Once we have reviewed your pre-submission inquiry, we will send you an email with a link to upload your
+            RDS file.
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Upload your RDS file. Please make sure it is under 2 GB (delete any unnecessary assays to reduce file
+            size) and that gene symbols are used as gene names. All necessary QC and annotation steps should be
+            completed prior to submission. Ensure that the expression data is normalized but not scaled.
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Once we have performed QC on your dataset, you will receive a private link to access it.</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+@import '../../theme';
+
+.legend {
+  margin-top: -60px;
+  position: relative;
+  float: right;
+  margin-right: 30px;
+
+  .percent-legend {
+    font-size: 14px;
+
+    .percentage-wrapper {
+      display: inline-block;
+
+      .percent-item {
+        display: inline-block;
+        margin-left: 10px;
+
+        i {
+          border-radius: 50%;
+          background-color: rgb(134 203 243);
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 5px;
+        }
+
+        b {
+          font-size: 14px;
+          text-align: center;
+          vertical-align: middle;
+          font-weight: normal;
+        }
+      }
+
+      .percent-item-10p i {
+        height: 5px;
+        width: 5px;
+      }
+
+      .percent-item-50p i {
+        height: 25px;
+        width: 25px;
+      }
+
+      .percent-item-100p i {
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .legend {
+    margin-top: 0;
+  }
+}

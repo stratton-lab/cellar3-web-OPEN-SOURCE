@@ -1,0 +1,39 @@
+<div *ngIf="isOpen()" class="dialog-wrapper">
+  <div class="dialog-overlay" [style.z-index]="getOverlayZ()" (click)="close()"></div>
+
+  <div class="dialog large-dialog" [style.z-index]="getDialogZ()">
+    <div class="dialog-header">
+      <div class="dialog-title">{{ input?.source }} - Cell Cell Interactions
+        <i (click)="close()" class="fa fa-multiply close-btn"></i>
+      </div>
+    </div>
+    <div class="dialog-content">
+
+      <div class="dropdown">
+        <div class="dropdown-btn-name">{{ selectedType || 'All Interaction Types' }} <i
+          class="fa fa-caret-down"></i></div>
+        <div class="dropdown-menu">
+          <div (click)="updateInteractionType(undefined)" class="dropdown-menu-item">All Interaction Types</div>
+          <div (click)="updateInteractionType(type)" *ngFor="let type of data?.types"
+               class="dropdown-menu-item">{{ type }}
+          </div>
+        </div>
+      </div>
+
+      <div class="msg-wrapper">
+        <div *ngIf="msg" class="err-msg">
+          <div class="msg-title">{{ msg!.title }}</div>
+          {{ msg!.detail }}
+        </div>
+      </div>
+      <div *ngIf="data && input" class="interaction-plot-wrapper">
+        <chord-diagram [data]="data.interactions"
+                       [datasetId]="input.datasetId"
+                       [species]="input.species"></chord-diagram>
+      </div>
+
+      <div *ngIf="busy" class="loading fa-solid fa-dna"></div>
+    </div>
+  </div>
+</div>
+

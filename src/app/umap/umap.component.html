@@ -1,0 +1,24 @@
+<div *ngIf="isOpen()" class="dialog-wrapper">
+  <div class="dialog-overlay" [style.z-index]="getOverlayZ()" (click)="close()"></div>
+
+  <div class="dialog large-dialog" [style.z-index]="getDialogZ()">
+    <div class="dialog-header">
+      <div class="dialog-title">{{getPlotName()}} <i (click)="close()" class="fa fa-multiply close-btn"></i>
+      </div>
+    </div>
+    <div class="dialog-content">
+          <div class="msg-wrapper">
+            <div *ngIf="msg" class="err-msg">
+              <div class="msg-title">{{msg!.title}}</div>
+              {{msg!.detail}}</div>
+          </div>
+          <plotly-plot *ngIf="data" #plotlyPlot
+                       [data]="data"
+                       [layout]="layout"
+                       [config]="config">
+          </plotly-plot>
+          <div *ngIf="busy" class="loading fa-solid fa-dna"></div>
+        </div>
+  </div>
+</div>
+

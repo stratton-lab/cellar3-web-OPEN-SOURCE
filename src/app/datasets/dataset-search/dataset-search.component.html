@@ -1,0 +1,11 @@
+<div [class.busy]="searchService.searcher.busy"
+     [class.has-results]="searchService.searcher.hasResults"
+     class="input-wrapper">
+  <input
+    [(ngModel)]="searchService.searcher.query"
+    (keyup)="search($event)"
+    (keyup.enter)="search($event)"
+    type="text"
+    placeholder="Search datasets..."/>
+  <div class="search-btn" (click)="search($event)"><i class="fa fa-search"></i></div>
+</div>

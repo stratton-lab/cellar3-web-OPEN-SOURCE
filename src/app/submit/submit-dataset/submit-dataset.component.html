@@ -1,0 +1,74 @@
+<div class="upload-form-container">
+  <div class="container">
+    <div class="form-wrapper">
+      <div class="row">
+        <div class="col col-lg-4 d-none d-lg-block">
+          <img class="main-illustration" src="assets/images/submit/rds-file-upload-img.jpg"
+               alt="rds file upload illustration">
+        </div>
+        <div class="col col-lg-8 col-md-12 col-sm-12">
+          <div class="form-content">
+            <div class="submit-title">Dataset Submission Portal</div>
+            <div *ngIf="submission" class="submit-details">
+              <div class="detail-tag">ID <b>{{ submission.dataset_id }}</b></div>
+              <div class="detail-tag">NAME <b>{{ submission.dataset_name }}</b></div>
+            </div>
+            <div *ngIf="submission" class="submit-content">
+
+              <div *ngIf="!msg && !busy">
+
+                <app-file-upload
+                  [title]="'Please upload a Seurat RDS file for your dataset.'"
+                  [description]="'Please ensure your file is in Seurat V3 or Seurat V5 format.'+
+'                Please make sure to remove all unnecessary assays and layers to make the file smaller and facilitate'+
+'                upload.'"
+                  [btnText]="'Open RDS FIle'"
+                  [icon]="'bi bi-file-earmark-arrow-up-fill'"
+                  (onFileUpload)="onSingleFileSelected('rdsFile', $event)"></app-file-upload>
+
+                <app-file-upload
+                  [title]="'Please upload a preview image for your dataset.'"
+                  [description]="'The image should be of 300x300 pixels dimension, in PNG or JPEG format.'"
+                  [btnText]="'Open Preview Image File'"
+                  [icon]="'bi bi-file-image'"
+                  (onFileUpload)="onSingleFileSelected('previewImage', $event)"></app-file-upload>
+
+                <div *ngIf="submission?.spatial_embeddings?.length" class="spatial">
+                  <div class="step-name">Spatial Embeddings</div>
+                  <div class="step-description">Please provide images for spatial embeddings.</div>
+
+                  <app-file-upload
+                    *ngFor="let spatial of submission.spatial_embeddings; let i = index"
+                    [title]="'Image for '+spatial.name"
+                    [btnText]="'Open Spatial Image File'"
+                    [icon]="'bi bi-image'"
+                    (onFileUpload)="onSpatialFileSelected(i, $event)"
+                  ></app-file-upload>
+                </div>
+
+              </div>
+
+              <div *ngIf="!msg && !busy"
+                   (click)="submit()"
+                   [class.active]="isReadyForSubmission()"
+                   [class.inactive]="!isReadyForSubmission()"
+                   class="button button-primary button-submit">Submit
+              </div>
+              <div *ngIf="busy" class="upload-progress">
+                <div><i class="fa fa-spinner fa-spin"></i> Uploading...</div>
+                <div class="progress-container">
+                  <div class="progress-bar" [style.width.%]="uploadProgress"></div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="msg" class="message" [ngClass]="'message-'+msg.type">
+              <div class="message-title">{{ msg.title }}</div>
+              <div class="message-details">{{ msg.detail }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

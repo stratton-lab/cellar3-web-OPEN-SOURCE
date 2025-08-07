@@ -1,0 +1,76 @@
+/* COLORS */
+
+$twitter-blue: rgb(29, 161, 242);
+$light-blue: #5899DA;
+$middle-blue: #0071bc;
+$dark-blue: #2F6497;
+$soft-blue: #1a9bd3;
+$blue1: rgb(29, 161, 242);
+$blue3: #5899DA;
+$blue2: #69a4e0;
+$light-red: #f30;
+$red1: #cd4741;
+$orange1: #ff9800;
+$dark-orange: #f56444;
+$rose-red: #ff416d;
+$green: #4caf50;
+$alt-green: #30dd8a;
+$main-green: #3cba92;
+$soft-black: #37474f;
+$nice-black: #0a033a;
+$black1: rgba(0, 0, 0, .87);
+$black3: #101012;
+$lighter-gray: #e8e8e8aa;
+$light-gray: #e8e8e8;
+$gray: #8c9296;
+$dark-gray: #666;
+$darker-gray: #636668;
+$gray1: #8f999d;
+$gray2: #656b6e;
+$gray3: #f2f4f9;
+$gray4: rgb(248, 252, 252);
+$pastel-green: #7acc8b;
+$pastel-red: #FDDFDF;
+
+/* THEME */
+$background: #f5fafc;
+$primary-color: $blue2;
+$header-title-color: $black3;
+
+$card-border-radius: 20px;
+$button-border-radius: 5px;
+
+:root {
+
+  /* COLORS */
+  --white: #fff;
+  --twitter-blue: rgb(29, 161, 242);
+  --red1: #cd4741;
+  --green1: #3cba92;
+  --blue2: #69a4e0;
+  --light-gray2: #f5fafc;
+  --light-gray: #FCF8F5;
+  --dark-gray: #655850;
+  --gray: #8f999d;
+
+  --tag-green: #83B77D;
+  --tag-purple: #9085B9;
+  --tag-red: #EA6A6B;
+  --tag-blue: #4A81A4;
+  --tag-caramel: #D99A45;
+  --tag-pink: #C064A0;
+
+  --soft-black: #404040;
+  --black: #101012;
+
+  /* GRADIENTS */
+  --color-grad-0: linear-gradient(to right, #25aae1, #4481eb, #3f86ed);
+  --color-grad-1: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+  --color-grad-2: linear-gradient(to right, #895cf2 0%, #4481eb 90%, #4481eb 100%);
+  --color-grad-3: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);
+
+  --background: #f5fafc;
+
+  /** DIMENSIONS**/
+  --button-border-radius: 5px;
+}

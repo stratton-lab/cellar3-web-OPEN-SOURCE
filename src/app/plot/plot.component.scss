@@ -1,0 +1,261 @@
+@import "../../theme";
+@import "../../animations";
+@import "../../dropdown";
+
+.dataset-name {
+  display: block;
+  text-align: left;
+  font-weight: 100;
+  font-size: 34px;
+  margin-bottom: 4px;
+  color: #37474f;
+}
+
+.dataset-description {
+  text-align: center;
+  color: $darker-gray;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.private-tag {
+  font-size: 14px;
+  color: $orange1;
+  margin-right: 15px;
+}
+
+.plot-tags {
+  margin-top: 10px;
+  text-align: center;
+
+  .plot-tag {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    color: $dark-gray;
+    margin-right: 15px;
+    text-decoration: none;
+
+    .fa, .fas, far {
+      font-size: 80%;
+    }
+  }
+
+  .tag.tag-species .fa:before {
+    content: '\f52e'
+  }
+
+  .tag.tag-tissue .fa:before {
+    content: '\f1ae'
+  }
+
+  .tag.tag-cells .fa:before {
+    content: '\f7fa'
+  }
+
+  .plot-tag-publication:hover {
+    text-decoration: underline;
+  }
+
+  .plot-tag-datasets {
+    cursor: pointer;
+  }
+
+  .plot-tag-datasets:hover {
+    .dropdown-menu {
+      display: block;
+    }
+  }
+
+  .plot-tag.tag-prod-status {
+    font-size: 10px;
+    font-weight: 900;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 0 5px;
+  }
+
+  .plot-tag.prod-status-PROD_PUBLIC {
+    color: $main-green;
+    border-color: $main-green;
+  }
+
+  .plot-tag.prod-status-PROD_PRIVATE {
+    color: $dark-orange;
+    border-color: $dark-orange;
+  }
+
+  .plot-tag.prod-status-DEV_ONLY {
+    color: $twitter-blue;
+    border-color: $twitter-blue;
+  }
+}
+
+
+.plot-wrapper {
+  border-radius: 10px;
+  background: white;
+}
+
+.loading-wrapper {
+  text-align: center;
+
+  .loading {
+    font-size: 30px;
+    color: $twitter-blue;
+    margin: 20px;
+    display: inline-block;
+    animation: rotate 4s linear infinite;
+  }
+}
+
+.plotly-svg-wrapper {
+  padding-left: 10px;
+  padding-right: 40px;
+  border: 1px solid $lighter-gray;
+  border-radius: 15px;
+}
+
+.image-preview {
+  z-index: 10;
+  display: inline-block;
+  position: relative;
+  width: inherit;
+
+  img {
+    position: absolute;
+    bottom: 10px;
+    border-radius: 10px;
+    width: auto;
+    height: 100px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    transition: height 0.3s ease-in-out;
+    transform-origin: bottom;
+  }
+}
+
+.image-preview {
+  img:hover {
+    height: 400px;
+  }
+}
+
+.actions {
+  padding-bottom: 10px;
+}
+
+.embeddings-categories {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 10px;
+
+  .embeddings-category {
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 3px;
+
+    .embeddings-category-name {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: $darker-gray;
+    }
+
+    .tabs-buttons {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .embeddings-category.active {
+    border-color: var(--blue2);
+    border-width: 2px;
+
+    .embeddings-category-name{
+      color: var(--tag-blue);
+      font-weight: 900;
+    }
+  }
+}
+
+.step-name {
+  padding-top: 0;
+  font-weight: 900;
+  font-size: 36px;
+}
+
+.plot-buttons-wrapper {
+  display: inline-block;
+  position: relative;
+  z-index: 5;
+  top: 30px;
+}
+
+.cluster-comparison-btn {
+  display: inline-block;
+  padding: 3px 10px;
+  color: white;
+  border-radius: 5px;
+  background-color: $twitter-blue;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+@media (hover: hover) {
+  .cluster-comparison-btn:hover {
+    background-color: $blue2;
+  }
+}
+
+.cluster-comparison-btn.active {
+  background-color: $main-green;
+  animation: bubble 4s infinite;
+  animation-timing-function: ease;
+}
+
+.cluster-comparison-btn.active.has-target {
+  background-color: $rose-red;
+}
+
+.undo-btn {
+  display: inline-block;
+  padding: 3px 10px;
+  color: white;
+  border-radius: 5px;
+  background-color: $darker-gray;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.undo-btn:hover {
+  background-color: $gray;
+}
+
+.gene-search-wrapper {
+  text-align: center;
+}
+
+.selection-prompt {
+  display: inline-block;
+  font-weight: 600;
+}
+
+
+@media (max-width: 991px) {
+  .plot-buttons-wrapper {
+    top: 0;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+
+    .cluster-comparison-btn {
+      margin-bottom: 10px;
+    }
+  }
+}

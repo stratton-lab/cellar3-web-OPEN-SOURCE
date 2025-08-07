@@ -1,0 +1,63 @@
+@import "../../../theme";
+
+.navigation {
+  margin-bottom: 10px;
+
+  .navigation-category {
+    font-weight: 800;
+    font-size: 12px;
+    color: #636668;
+    margin-bottom: 3px;
+    padding-right: 10px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .navigation-category:hover {
+    color: $middle-blue;
+  }
+
+  .navigation-category:after {
+    content: '>';
+    margin-left: 10px;
+  }
+
+  .navigation-category:last-child {
+    cursor: default;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .navigation-category:last-child:after {
+    content: ''
+  }
+}
+
+.category {
+  display: inline-block;
+  color: #0ba360;
+  border-radius: 3px;
+  border: solid 1px #0ba360;
+  padding: 0 7px;
+  font-variant: small-caps;
+  float: right;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.gene-set-link {
+  float: right;
+  font-size: 12px;
+  color: $gray;
+}
+
+.gene-set-link:hover {
+  color: $middle-blue;
+}
+
+.selected-gene-set-msg {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 12px;
+  color: $soft-blue;
+}

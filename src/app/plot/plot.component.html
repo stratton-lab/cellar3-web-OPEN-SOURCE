@@ -1,0 +1,114 @@
+<div class="plot-wrapper">
+
+  <div *ngIf="busy" class="loading fa-solid fa-dna"></div>
+
+  <div class="msg-wrapper">
+    <div *ngIf="msg" class="err-msg">
+      <div class="msg-title">{{ msg.title }}</div>
+      {{ msg.detail }}
+    </div>
+  </div>
+
+  <div *ngIf="plot?.data" class="plot-data">
+    <div class="step-name">{{ plot?.meta?.name }}</div>
+    <div class="dataset-description">{{ plot?.meta?.description }}</div>
+    <div class="plot-tags">
+      <div class="plot-tag"><i class="fa fa-bacteria"></i> {{ plot?.meta?.cells }} Cells</div>
+      <div class="plot-tag"><i class="fa fa-frog"></i> {{ plot?.meta?.species }}</div>
+      <div class="plot-tag"><i class="fa fa-lungs"></i> {{ plot?.meta?.tissue }}</div>
+
+      <div *ngIf="plot?.meta?.linksPublications?.length"
+           class="plot-tag plot-tag-datasets dropdown">
+        <i class="fa fa-database"></i> {{ getPluralizedName(plot?.meta?.linksPublications, 'Publication') }}
+        <div class="dropdown-menu">
+          <a *ngFor="let link of plot?.meta?.linksPublications"
+             [href]="link.url" target="_blank" class="dropdown-menu-item"><i
+            class="fa fa-external-link"></i> {{ link.name }}</a>
+        </div>
+      </div>
+
+      <div *ngIf="plot?.meta?.linksDatasets?.length"
+           class="plot-tag plot-tag-datasets dropdown">
+        <i class="fa fa-database"></i> {{ getPluralizedName(plot?.meta?.linksDatasets, 'Dataset') }}
+        <div class="dropdown-menu">
+          <a *ngFor="let link of plot?.meta?.linksDatasets"
+             [href]="link.url" target="_blank" class="dropdown-menu-item"><i
+            class="fa fa-external-link"></i> {{ link.name }}</a>
+        </div>
+      </div>
+
+      <i *ngIf="!plot?.meta?.public" class="private-tag fa fa-lock" title="This dataset is PRIVATE"></i>
+
+      <div class="plot-tag tag-prod-status" *ngIf="plot?.meta?.prodStatus"
+           [ngClass]="'prod-status-'+plot?.meta?.prodStatus">{{ getNiceProdStatus() }}
+      </div>
+    </div>
+    <div class="actions">
+
+      <div *ngIf="plot?.meta?.embeddingsCategories" class="embeddings-categories">
+        <div *ngFor="let category of plot?.meta?.embeddingsCategories"
+             [class.active]="isActiveEmbeddingCategory(category)" class="embeddings-category">
+          <div class="embeddings-category-name">{{ category.name }}</div>
+          <div class="tabs-buttons">
+            <div *ngFor="let embedding of category.embeddings"
+                 (click)="updateEmbeddingMatrix(embedding.key)"
+                 [class.active]="embedding.key==embeddingName"
+                 class="tab-button tab-button-alt">{{ embedding.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="groups">
+        <div class="tabs-buttons">
+          <div *ngFor="let group of plot?.meta?.groups"
+               (click)="updateGroupColumn(group)"
+               [class.active]="group.key==groupColumn"
+               [class.unavailable]="!isGroupAvailable(group)"
+               class="tab-button">{{ group.name }}
+          </div>
+        </div>
+      </div>
+
+      <div class="gene-search-wrapper">
+        <div (click)="openGeneExplorer($event)" class="button button-plot-action"><i class="fa fa-dna"></i> Gene
+          Explorer
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="plotly-svg-wrapper">
+        <div class="plot-buttons-wrapper">
+          <div *ngIf="target==null" class="selection-prompt">Select cells to get started.</div>
+          <div *ngIf="target!=null" (click)="analyzeSelection()" class="cluster-comparison-btn">
+            Analyze & Edit Selection
+          </div>
+          <div *ngIf="target!=null" class="cluster-comparison-btn dropdown"
+               (click)="toggleShowCompareSelectionMenu($event)">
+            Compare Selection to Other Clusters
+            <div class="dropdown-menu">
+              <div (click)="useRestAsBackground()" class="dropdown-menu-item">Use all other clusters</div>
+              <div (click)="startBackgroundSelection($event)" class="dropdown-menu-item">Select specific clusters</div>
+            </div>
+          </div>
+          <div *ngIf="canUndo()" (click)="undo()" class="undo-btn">Undo {{ getLatestStateDescription() }}</div>
+        </div>
+        <plotly-plot #plotlyPlot
+                     [data]="plot?.data"
+                     [layout]="layout"
+                     [config]="config"
+                     (legendClick)="showAnnotateClusterDialog($event)"
+                     (plotlyClick)="onSampleSelected($event)"
+                     (selected)="onSamplesSelected($event)"
+                     (hover)="showTooltip($event)"
+                     (unhover)="hideTooltip($event)">
+        </plotly-plot>
+        <cell-tooltip [tooltipData]="tooltipData"></cell-tooltip>
+      </div>
+      <div *ngIf="getCurrentEmbeddingImage()" class="image-preview">
+        <img [src]="getCurrentEmbeddingImage()" alt="image preview">
+      </div>
+    </div>
+  </div>
+</div>

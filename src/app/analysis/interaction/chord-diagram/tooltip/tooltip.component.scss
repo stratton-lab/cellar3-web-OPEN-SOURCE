@@ -1,0 +1,22 @@
+@import '../../../../../tooltip';
+@import '../../../../../theme';
+
+.plot-tooltip {
+  width: 250px;
+
+  .tooltip-header {
+    padding: 10px;
+
+  }
+
+  .description {
+    font-style: italic;
+    color: $darker-gray;
+    margin-top: 5px;
+  }
+}
+
+.tooltip-header {
+  background-color: $background;
+  border-radius: 25px;
+}

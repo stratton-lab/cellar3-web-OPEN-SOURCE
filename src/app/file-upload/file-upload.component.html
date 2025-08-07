@@ -1,0 +1,17 @@
+<div class="upload-wrapper" [class.busy]="busy">
+  <div class="title">{{ title }}</div>
+  <div class="description">{{ description }}</div>
+
+  <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+  <div class="file-upload">
+    <div class="upload-btn" (click)="fileUpload.click()">
+      <i [class]="icon"></i>{{ btnText }}
+    </div>
+  </div>
+  <div *ngIf="!isFileSelected()" class="no-file-selected">No File Selected</div>
+  <div *ngIf="isFileSelected()" class="file-selected-msg">File selected: <b>{{ getSelectedFileName() }}</b></div>
+
+  <div *ngIf="previewUrl" class="preview-wrapper">
+    <img class="preview" [src]="previewUrl" alt="preview">
+  </div>
+</div>

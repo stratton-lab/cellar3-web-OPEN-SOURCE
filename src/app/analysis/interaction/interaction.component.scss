@@ -1,0 +1,26 @@
+@import "../../../dropdown";
+
+.interaction-plot-wrapper {
+  text-align: center;
+  padding: 20px;
+}
+
+.dropdown {
+  .dropdown-btn-name {
+    cursor: pointer;
+    font-weight: 600;
+    border: 1px solid darkgray;
+    padding: 3px 8px;
+    border-radius: 10px;
+
+    i {
+      margin-left: 4px;
+    }
+  }
+
+  .dropdown-menu {
+    .dropdown-menu-item {
+      white-space: nowrap;
+    }
+  }
+}

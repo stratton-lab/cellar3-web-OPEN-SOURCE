@@ -1,0 +1,337 @@
+@import "theme";
+@import "fonts";
+@import "buttons";
+@import "dialog";
+@import "animations";
+
+body {
+  font-family: Open_Sans, sans-serif;
+}
+
+.message {
+  text-align: center;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 5px;
+  border: 1px solid $gray;
+  color: $black1;
+
+  .message-title {
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .message-details {
+    font-size: 20px;
+    font-weight: 400;
+  }
+}
+
+.message.message-success {
+  color: $green;
+  border: 1px solid $pastel-green;
+}
+
+.message.message-error {
+  border: 1px solid $pastel-red;
+  color: $red1;
+}
+
+.err-msg {
+  text-align: center;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 5px;
+  border: 1px solid $pastel-red;
+  color: $red1;
+
+  .msg-title {
+    font-size: 20px;
+    font-weight: 800;
+  }
+}
+
+
+.step-content {
+  margin-top: 30px;
+  border-radius: 10px;
+  background: white;
+}
+
+.step-name {
+  display: block;
+  text-align: center;
+  font-weight: 100;
+  font-size: 34px;
+  margin-bottom: 4px;
+  padding-top: 20px;
+  color: #37474f;
+}
+
+.step-description {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 25px;
+  color: $gray2;
+}
+
+.step-inner-content {
+  margin: 20px
+}
+
+.options {
+
+  padding: 20px;
+
+  .options-name {
+    text-align: center;
+  }
+
+  .options-description {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: $gray2;
+    text-align: center;
+  }
+
+  .option-description {
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    padding: 20px;
+  }
+}
+
+
+.checkbox {
+  color: $blue1;
+}
+
+.toggle {
+  font-size: 28px;
+  vertical-align: bottom;
+}
+
+.toggle.fa-toggle-off {
+  color: var(--gray);
+}
+
+.toggle.fa-toggle-on {
+  color: $blue1;
+}
+
+.checkbox-name {
+  cursor: pointer;
+}
+
+.sub-option-name {
+  font-size: 12px;
+  font-weight: 900;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+input[type=number]:not(.browser-default), input[type=text]:not(.browser-default) {
+  border: none;
+
+}
+
+input[type=number]:not(.browser-default):hover, input[type=number]:not(.browser-default):active {
+  border: none;
+  box-shadow: none;
+}
+
+.input-wrapper {
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+
+  label {
+    margin-right: 10px;
+    font-style: italic;
+    color: $red1;
+    position: absolute;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+input[type=number].number-input:not(.browser-default) {
+  width: 70px;
+  height: 4rem;
+}
+
+input[type=text]:not(.browser-default) {
+  width: 70px;
+}
+
+
+.slider-wrapper {
+  .ngx-slider {
+    .ngx-slider-pointer {
+      width: 10px;
+      height: 10px;
+      top: -3px;
+    }
+
+    .ngx-slider-bubble {
+      font-size: 12px;
+      bottom: 10px;
+    }
+  }
+}
+
+.loading {
+  z-index: 99999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  color: $alt-green;
+  animation: rotate 4s infinite;
+  animation-timing-function: ease;
+}
+
+.coming-soon {
+  display: inline-block;
+  color: $dark-gray;
+  border-radius: 3px;
+  border: solid 1px $dark-gray;
+  padding: 0 7px;
+  font-variant: small-caps;
+  float: right;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+svg g.pielayer {
+  cursor: pointer;
+}
+
+.actions-header-name {
+  font-weight: 800;
+  font-size: 12px;
+  color: #636668;
+  margin-bottom: 10px;
+}
+
+
+.receipt {
+  display: inline-block;
+  font-size: 10px;
+  margin-right: 20px;
+  color: $dark-gray;
+  cursor: pointer;
+}
+
+.receipt:hover {
+  color: $twitter-blue;
+  font-weight: 500;
+}
+
+.simple-select-pie-chart-wrapper .slice:hover {
+  filter: brightness(1.1);
+}
+
+
+/* Makes sure that the UMAP plot in the dialog takes all available height */
+umap-plot-dialog {
+  plotly-plot {
+    width: 100%;
+    height: 100%;
+  }
+
+  .js-plotly-plot {
+    height: 100% !important;
+    width: 100% !important;
+  }
+}
+
+gene-explorer .gene-search-wrapper gene-search {
+  .dropdown {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+
+    i.fa.fa-search {
+      margin-left: 12px;
+      font-size: 24px;
+      margin-top: 12px;
+    }
+
+    input[type=text]:not(.browser-default) {
+      font-size: 24px !important;
+      font-weight: 800;
+      border-radius: 12px !important;
+      padding-left: 52px !important;
+      max-width: 100%;
+    }
+  }
+}
+
+
+.facet-term {
+  margin-bottom: 4px;
+  color: #666;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.facet-term.selected {
+  color: #5899da;
+  font-weight: 700;
+}
+
+.facet-term:hover {
+  color: #0071bc;
+}
+
+.facet-term:before {
+  font-family: Font Awesome\ 5 Free;
+  content: "\f0c8";
+  color: #8c9296;
+  font-weight: 100;
+}
+
+.facet-term.selected:before {
+  content: "\f14a";
+  color: #5899da;
+  font-weight: 600;
+}
+
+.facet-count {
+  color: gray;
+  float: right;
+  font-weight: 700;
+}
+
+.card {
+  margin-bottom: 20px;
+  font-size: 14px;
+  position: relative;
+  text-align: left;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  border: none;
+
+  .card-title {
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 30px;
+  }
+}
+
+.card.selectable-1 {
+  cursor: pointer;
+}
+
+.card.selectable-1:hover {
+  box-shadow: 0 1px 5px var(--gray);
+}

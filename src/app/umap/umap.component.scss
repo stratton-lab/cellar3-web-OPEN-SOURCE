@@ -1,0 +1,11 @@
+
+.dialog.large-dialog {
+  display: flex;
+  flex-direction: column;
+
+  .dialog-content {
+    flex-grow: 1;
+
+  }
+}
+
